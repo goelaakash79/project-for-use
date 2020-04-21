@@ -1,38 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Sen:wght@400;700&display=swap");
+
 .App {
-  text-align: center;
+	padding: 50px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	height: 100vh;
+	font-family: Sen;
+	/* overflow: hidden !important; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1 {
+	margin: 0 0 25px 0;
+	text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+form {
+	display: flex;
+	flex-direction: column;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+	/* width: 125px; */
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+	border: none;
+	padding: 6px 16px;
+	background-color: #4285f4;
+	text-align: center;
+	color: #ffffff;
+	border-radius: 6px;
+	cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button[type="submit"] {
+	background-color: #4285f4;
+	color: white;
+	font-size: 14px;
+	font-weight: 900;
+	border-radius: 5px;
+	text-transform: uppercase;
+	padding: 8px 16px;
+}
+
+.map-card {
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.highlight {
+	color: #4c566a;
+	font-weight: 700;
 }
