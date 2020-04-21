@@ -17,15 +17,16 @@ app.use(bodyParser.json());
 
 // load schemas
 const User = require("./models/User");
+const Problem = require("./models/Problem");
 
 // Routes
 app.use("/api/auth", require("./routes/api/authRouter"));
-app.use("/api/index", require("./routes/api/indexRouter"));
+app.use("/api/practice", require("./routes/api/indexRouter"));
 
-// app.use(express.static(path.join(__dirname, 'client/build')))
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '/client/build/index.html'))
-// })
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 // app.get('*', (req, res) => {
 //     res.render('notfound');
