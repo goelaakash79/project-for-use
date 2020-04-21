@@ -11,6 +11,7 @@ import Login from "./components/auth/Login";
 import Home from "./components/main/Home";
 import Dashboard from "./components/main/Dashboard";
 import ContestsPage from "./components/main/ContestsPage";
+import Practice from "./components/main/Practice";
 
 function App() {
 	return (
@@ -18,6 +19,7 @@ function App() {
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/dashboard" component={Dashboard} />
+				<Route exact path="/Practice" component={Practice} />
 				<Route exact path="/contest" component={ContestsPage} />
 				<Route exact path="/register" component={Register} />
 				<Route exact path="/login" component={Login} />

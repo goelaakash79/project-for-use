@@ -28,6 +28,12 @@ export default props => {
 					<span style={{ float: "right", fontSize: 16 }}>
 						<span
 							className="mr-4"
+							onClick={() => props.history.push("/practice")}
+						>
+							Practice
+						</span>
+						<span
+							className="mr-4"
 							onClick={() => props.history.push("/contest")}
 						>
 							Contests
