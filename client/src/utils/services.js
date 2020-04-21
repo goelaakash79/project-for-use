@@ -1,5 +1,11 @@
 import axios from "axios";
-import { authLogin, authRegister } from "./routes";
+import {
+	authLogin,
+	authRegister,
+	runProgram,
+	compileProgram,
+	practiceProblems
+} from "./routes";
 
 axios.defaults.baseURL = "http://localhost:5000/api/";
 
@@ -23,41 +29,67 @@ export const registerService = async data => {
 	}
 };
 
-// export const dashboardService = async () => {
-// 	try {
-// 		let AUTH_TOKEN = localStorage.getItem("token");
-// 		if (AUTH_TOKEN) {
-// 			const response = await axios.get(dashboard, {
-// 				headers: { "x-auth-token": AUTH_TOKEN }
-// 			});
-// 			if (response.data.message === "success") {
-// 				return response.data.data;
-// 			} else {
-// 				console.log(response);
-// 			}
-// 		}
-// 	} catch (err) {
-// 		console.log(err.response);
-// 		return err.response.data;
-// 	}
-// };
+export const problemsService = async () => {
+	try {
+		let AUTH_TOKEN = localStorage.getItem("token");
+		if (AUTH_TOKEN) {
+			const response = await axios.get(practiceProblems, {
+				headers: { "x-auth-token": AUTH_TOKEN }
+			});
+			if (response.data.message === "success") {
+				return response.data.data;
+			} else {
+				console.log(response);
+			}
+		}
+	} catch (err) {
+		console.log(err.response);
+		return err.response.data;
+	}
+};
 
-// export const ladderService = async params => {
-// 	try {
-// 		let AUTH_TOKEN = localStorage.getItem("token");
-// 		if (AUTH_TOKEN) {
-// 			const response = await axios.get(ladderDetail, {
-// 				headers: { "x-auth-token": AUTH_TOKEN },
-// 				params
-// 			});
-// 			if (response.data.message === "success") {
-// 				return response.data.data;
-// 			} else {
-// 				console.log(response);
-// 			}
-// 		}
-// 	} catch (err) {
-// 		console.log(err.response);
-// 		return err.response.data;
-// 	}
-// };
+export const runProgramService = async ({ source }) => {
+	try {
+		let AUTH_TOKEN = localStorage.getItem("token");
+		if (AUTH_TOKEN) {
+			const response = await axios.post(
+				runProgram,
+				{
+					headers: { "x-auth-token": AUTH_TOKEN }
+				},
+				{ source }
+			);
+			if (response.data.message === "success") {
+				return response.data.data;
+			} else {
+				console.log(response);
+			}
+		}
+	} catch (err) {
+		console.log(err.response);
+		return err.response.data;
+	}
+};
+
+export const compileProgramService = async ({ source }) => {
+	try {
+		let AUTH_TOKEN = localStorage.getItem("token");
+		if (AUTH_TOKEN) {
+			const response = await axios.post(
+				compileProgram,
+				{
+					headers: { "x-auth-token": AUTH_TOKEN }
+				},
+				{ source }
+			);
+			if (response.data.message === "success") {
+				return response.data.data;
+			} else {
+				console.log(response);
+			}
+		}
+	} catch (err) {
+		console.log(err.response);
+		return err.response.data;
+	}
+};
