@@ -15,7 +15,7 @@ const Register = props => {
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-			props.history.push("/");
+			props.history.push("/dashboard");
 		}
 	}, []);
 
@@ -37,7 +37,7 @@ const Register = props => {
 			if (res.message === "success") {
 				toast.success(`Successfully Registered`);
 				setIsLoading(false);
-				props.history.push("/");
+				props.history.push("/dashboard");
 			}
 		} catch (err) {
 			// console.log(err);

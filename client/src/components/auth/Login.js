@@ -15,7 +15,7 @@ const Login = props => {
 
 	useEffect(() => {
 		if (localStorage.getItem("token")) {
-			props.history.push("/");
+			props.history.push("/dashboard");
 		}
 	}, []);
 
@@ -37,7 +37,7 @@ const Login = props => {
 				localStorage.setItem("token", token);
 				localStorage.setItem("user_id", res.user._id);
 				setIsLoading(false);
-				props.history.push("/");
+				props.history.push("/dashboard");
 			}
 		} catch (err) {
 			console.log(err);

@@ -22,14 +22,14 @@ export default props => {
 							single platform
 						</p>
 						<button
-							className="btn btn-primary btn-lg"
+							className="btn btn-primary btn-lg mt-2"
 							onClick={() => props.history.push("/register")}
 						>
 							Join CodeEra
 						</button>
 						<p className="mt-5">
 							Developed by Abhishek Verma | Faizan Malik |
-							Depandra 420
+							Depandra Singh
 						</p>
 					</div>
 					<div className="col-lg-5 mt-5">
