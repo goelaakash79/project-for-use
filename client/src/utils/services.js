@@ -7,7 +7,7 @@ import {
 	practiceProblems
 } from "./routes";
 
-axios.defaults.baseURL = "https://vr12-project.herokuapp.com//api/";
+axios.defaults.baseURL = "https://vr12-project.herokuapp.com/api/";
 
 export const loginService = async data => {
 	try {
