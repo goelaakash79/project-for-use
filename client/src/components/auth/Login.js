@@ -27,11 +27,11 @@ const Login = props => {
 			const data = { email, password };
 			const res = await loginService(data);
 			if (res.error === true) {
-				toast.error(res.message);
+				await toast.error(res.message);
 				setIsLoading(false);
 			}
 			if (res.message === "success") {
-				toast.success("Welcome to Rechargym");
+				toast.success("Welcome to CodeEra");
 
 				const token = res.token;
 				localStorage.setItem("token", token);
@@ -40,6 +40,7 @@ const Login = props => {
 				props.history.push("/dashboard");
 			}
 		} catch (err) {
+			setIsLoading(false);
 			console.log(err);
 		}
 	};

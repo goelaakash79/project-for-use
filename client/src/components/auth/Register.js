@@ -38,6 +38,8 @@ const Register = props => {
 				toast.success(`Successfully Registered`);
 				setIsLoading(false);
 				props.history.push("/dashboard");
+			} else {
+				setIsLoading(false);
 			}
 		} catch (err) {
 			// console.log(err);

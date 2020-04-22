@@ -32,6 +32,10 @@ export default props => {
 				setCompiled(true);
 				setOutput(null);
 			}
+			if (res.error) {
+				setIsLoading(false);
+				setOutput("/*** some unexpected error occurred ***/");
+			}
 		} catch (err) {}
 	};
 	const handleRun = async () => {
@@ -46,6 +50,10 @@ export default props => {
 			) {
 				setIsLoading(false);
 				setOutput(res.result.run_status.output);
+			}
+			if (res.error) {
+				setIsLoading(false);
+				setOutput("/*** some unexpected error occurred ***/");
 			}
 		} catch (err) {}
 	};
