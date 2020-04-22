@@ -27,17 +27,21 @@ const Login = props => {
 			const data = { email, password };
 			const res = await loginService(data);
 			if (res.error === true) {
-				await toast.error(res.message);
+				toast.error(res.message);
 				setIsLoading(false);
 			}
 			if (res.message === "success") {
 				toast.success("Welcome to CodeEra");
-
-				const token = res.token;
-				localStorage.setItem("token", token);
-				localStorage.setItem("user_id", res.user._id);
+				setTimeout(() => {
+					const token = res.token;
+					localStorage.setItem("token", token);
+					localStorage.setItem("user_id", res.user._id);
+					setIsLoading(false);
+					props.history.push("/dashboard");
+				}, 1000);
+			} else {
+				toast.error(res.message);
 				setIsLoading(false);
-				props.history.push("/dashboard");
 			}
 		} catch (err) {
 			setIsLoading(false);
@@ -48,7 +52,7 @@ const Login = props => {
 		<div className="container">
 			<ToastContainer
 				position="top-right"
-				autoClose={5000}
+				autoClose={2500}
 				hideProgressBar
 				newestOnTop={false}
 				closeOnClick

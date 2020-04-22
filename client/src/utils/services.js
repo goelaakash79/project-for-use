@@ -59,11 +59,7 @@ export const runProgramService = async ({ source }) => {
 				// 	headers: { "x-auth-token": AUTH_TOKEN }
 				// }
 			);
-			if (response.data.message === "success") {
-				return response.data;
-			} else {
-				console.log(response);
-			}
+			return response.data;
 		}
 	} catch (err) {
 		console.log(err.response);
@@ -82,11 +78,7 @@ export const compileProgramService = async ({ source }) => {
 				// },
 				{ source }
 			);
-			if (response.data.message === "success") {
-				return response.data;
-			} else {
-				console.log(response);
-			}
+			return response.data;
 		}
 	} catch (err) {
 		console.log(err.response);

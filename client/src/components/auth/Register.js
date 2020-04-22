@@ -36,8 +36,10 @@ const Register = props => {
 			}
 			if (res.message === "success") {
 				toast.success(`Successfully Registered`);
-				setIsLoading(false);
-				props.history.push("/dashboard");
+				setTimeout(() => {
+					setIsLoading(false);
+					props.history.push("/dashboard");
+				}, 1000);
 			} else {
 				setIsLoading(false);
 			}

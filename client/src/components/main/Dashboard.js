@@ -24,19 +24,23 @@ export default props => {
 		try {
 			const res = await compileProgramService({ source: code });
 
-			if (
-				res.result.compile_status === "OK" &&
-				res.message === "success"
-			) {
-				setIsLoading(false);
-				setCompiled(true);
-				setOutput(null);
-			}
+			if (res.message === "success")
+				if (res.result.compile_status === "OK") {
+					setIsLoading(false);
+					setCompiled(true);
+					setOutput(null);
+				}
 			if (res.error) {
 				setIsLoading(false);
 				setOutput("/*** some unexpected error occurred ***/");
 			}
-		} catch (err) {}
+		} catch (err) {
+			console.log(err);
+			// if (err.data.error) {
+			// 	setIsLoading(false);
+			// 	setOutput("/*** some unexpected error occurred ***/");
+			// }
+		}
 	};
 	const handleRun = async () => {
 		setIsLoading(true);
@@ -44,13 +48,14 @@ export default props => {
 		try {
 			const res = await runProgramService({ source: code });
 
-			if (
-				res.result.compile_status === "OK" &&
-				res.result.run_status.status === "AC"
-			) {
-				setIsLoading(false);
-				setOutput(res.result.run_status.output);
-			}
+			if (res.message === "success")
+				if (
+					res.result.compile_status === "OK" &&
+					res.result.run_status.status === "AC"
+				) {
+					setIsLoading(false);
+					setOutput(res.result.run_status.output);
+				}
 			if (res.error) {
 				setIsLoading(false);
 				setOutput("/*** some unexpected error occurred ***/");
