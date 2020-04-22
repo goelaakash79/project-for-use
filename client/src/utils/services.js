@@ -54,13 +54,13 @@ export const runProgramService = async ({ source }) => {
 		if (AUTH_TOKEN) {
 			const response = await axios.post(
 				runProgram,
-				{
-					headers: { "x-auth-token": AUTH_TOKEN }
-				},
 				{ source }
+				// {
+				// 	headers: { "x-auth-token": AUTH_TOKEN }
+				// }
 			);
 			if (response.data.message === "success") {
-				return response.data.data;
+				return response.data;
 			} else {
 				console.log(response);
 			}
@@ -77,13 +77,13 @@ export const compileProgramService = async ({ source }) => {
 		if (AUTH_TOKEN) {
 			const response = await axios.post(
 				compileProgram,
-				{
-					headers: { "x-auth-token": AUTH_TOKEN }
-				},
+				// {
+				// 	headers: { "x-auth-token": AUTH_TOKEN }
+				// },
 				{ source }
 			);
 			if (response.data.message === "success") {
-				return response.data.data;
+				return response.data;
 			} else {
 				console.log(response);
 			}

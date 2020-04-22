@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 export default props => {
 	return (
@@ -6,7 +6,12 @@ export default props => {
 			<div className="container">
 				<h4 className="mt-4">
 					<b>CodeEra</b>
-					<span style={{ float: "right", fontSize: 16 }}>Login</span>
+					<span
+						style={{ float: "right", fontSize: 16 }}
+						onClick={() => props.history.push("/login")}
+					>
+						Login
+					</span>
 				</h4>
 
 				<div className="row mt-5">

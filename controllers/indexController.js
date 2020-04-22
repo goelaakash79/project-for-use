@@ -40,28 +40,24 @@ module.exports.compileProgram = async (req, res) => {
 		config.language = "JAVASCRIPT_NODE"; //optional choose any one of them or none
 
 		let result;
-		// result = await hackerEarth.compile(config);
-		result = {
-			async: 0,
-			compile_status: "OK",
-			id: "391a8dz",
-			code_id: "391a8dz"
-		};
-		return res
-			.status(200)
-			.json({ message: "success", result: result, error: false });
+		result = await hackerEarth.compile(config);
+		// result = {
+		// 	async: 0,
+		// 	compile_status: "OK",
+		// 	id: "391a8dz",
+		// 	code_id: "391a8dz"
+		// };
+		return res.status(200).json({
+			message: "success",
+			result: JSON.parse(result),
+			error: false
+		});
 	} catch (err) {
 		console.log(err);
 		return res
 			.status(400)
 			.json({ message: err.message, error: true, data: null });
 	}
-	// const response = {
-	// 	async: 0,
-	// 	compile_status: "OK",
-	// 	id: "391a8dz",
-	// 	code_id: "391a8dz"
-	// };
 };
 
 module.exports.runProgram = async (req, res) => {
@@ -75,55 +71,36 @@ module.exports.runProgram = async (req, res) => {
 		config.language = "JAVASCRIPT_NODE"; //optional choose any one of them or none
 
 		let result;
-		// result = await hackerEarth.run(config);
-		result = {
-			run_status: {
-				memory_used: "64",
-				time_limit: 1,
-				output_html: "12<br>",
-				memory_limit: 262144,
-				time_used: "0.101539",
-				signal: "OTHER",
-				exit_code: "0",
-				status_detail: "NA",
-				status: "AC",
-				stderr: "",
-				output: "12\n",
-				async: 0,
-				request_NOT_OK_reason: "",
-				request_OK: "True"
-			},
-			compile_status: "OK",
-			code_id: "9b8d6bI"
-		};
-		return res
-			.status(200)
-			.json({ message: "success", result: result, error: false });
+		result = await hackerEarth.run(config);
+		// result = {
+		// 	run_status: {
+		// 		memory_used: "64",
+		// 		time_limit: 1,
+		// 		output_html: "12<br>",
+		// 		memory_limit: 262144,
+		// 		time_used: "0.101539",
+		// 		signal: "OTHER",
+		// 		exit_code: "0",
+		// 		status_detail: "NA",
+		// 		status: "AC",
+		// 		stderr: "",
+		// 		output: "12\n",
+		// 		async: 0,
+		// 		request_NOT_OK_reason: "",
+		// 		request_OK: "True"
+		// 	},
+		// 	compile_status: "OK",
+		// 	code_id: "9b8d6bI"
+		// };
+		return res.status(200).json({
+			message: "success",
+			result: JSON.parse(result),
+			error: false
+		});
 	} catch (err) {
 		console.log(err);
 		return res
 			.status(400)
 			.json({ message: err.message, error: true, data: null });
 	}
-
-	// const response = {
-	// 	run_status: {
-	// 		memory_used: "64",
-	// 		time_limit: 1,
-	// 		output_html: "12<br>",
-	// 		memory_limit: 262144,
-	// 		time_used: "0.101539",
-	// 		signal: "OTHER",
-	// 		exit_code: "0",
-	// 		status_detail: "NA",
-	// 		status: "AC",
-	// 		stderr: "",
-	// 		output: "12\n",
-	// 		async: 0,
-	// 		request_NOT_OK_reason: "",
-	// 		request_OK: "True"
-	// 	},
-	// 	compile_status: "OK",
-	// 	code_id: "9b8d6bI"
-	// };
 };

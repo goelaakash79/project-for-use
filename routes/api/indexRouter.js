@@ -11,8 +11,8 @@ const {
 const { auth } = require("../../middlewares/auth");
 
 router.get("/", index);
-router.get("/problems", auth, getPracticeQuestions);
-router.get("/compile", auth, compileProgram);
-router.get("/run", auth, runProgram);
+router.get("/problems", getPracticeQuestions);
+router.post("/compile", compileProgram);
+router.post("/run", runProgram);
 
 module.exports = router;

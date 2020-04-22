@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 module.exports.auth = (req, res, next) => {
-	const token = req.header("x-auth-token");
+	const token = req.body.headers["x-auth-token"];
 	if (!token) {
 		return res
 			.status(401)

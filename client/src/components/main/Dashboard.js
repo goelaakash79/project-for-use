@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/mode/javascript/javascript";
-import Axios from "axios";
+import { runProgramService, compileProgramService } from "../../utils/services";
+import { FaSpinner, FaSyncAlt } from "react-icons/fa";
 
 // import "./style.css";
 export default props => {
-	const [code, setCode] = useState("//write your code here");
+	const [code, setCode] = useState("//write your code javascript here");
+	const [compiled, setCompiled] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const [output, setOutput] = useState(null);
 
 	useEffect(() => {
 		if (!localStorage.getItem("token")) {
@@ -13,17 +17,37 @@ export default props => {
 		}
 	}, []);
 
-	const handleSubmit = async () => {
-		const res = await Axios.post(
-			"https://cors-anywhere.herokuapp.com/https://api.hackerearth.com/v3/code/compile/",
-			{
-				client_secret: "1c8a5f77adbc988489913a7660c27bb542ffb7b6",
-				source: code,
-				lang: "JAVASCRIPT_NODE",
-				async: 1
+	const handleCompile = async () => {
+		setIsLoading(true);
+		setOutput("/*** compiling ***/");
+
+		try {
+			const res = await compileProgramService({ source: code });
+
+			if (
+				res.result.compile_status === "OK" &&
+				res.message === "success"
+			) {
+				setIsLoading(false);
+				setCompiled(true);
+				setOutput(null);
 			}
-		);
-		console.log(res);
+		} catch (err) {}
+	};
+	const handleRun = async () => {
+		setIsLoading(true);
+		setOutput("/*** executing ***/");
+		try {
+			const res = await runProgramService({ source: code });
+
+			if (
+				res.result.compile_status === "OK" &&
+				res.result.run_status.status === "AC"
+			) {
+				setIsLoading(false);
+				setOutput(res.result.run_status.output);
+			}
+		} catch (err) {}
 	};
 
 	return (
@@ -73,14 +97,37 @@ export default props => {
 								autoScroll={true}
 								onChange={(editor, data, value) => {}}
 							/>
-							<button className="mt-4" onClick={handleSubmit}>
-								Run Code
+							<button
+								disabled={isLoading}
+								className="mt-4 mb-4"
+								hidden={compiled}
+								onClick={handleCompile}
+							>
+								<FaSpinner hidden={!isLoading} /> Compile
 							</button>
+
+							<button
+								disabled={isLoading}
+								className="mt-4 mb-4"
+								onClick={handleRun}
+								hidden={!compiled}
+							>
+								<FaSpinner hidden={!isLoading} /> Run
+							</button>
+
+							<span
+								className="mt-4 mb-4 ml-4"
+								onClick={() => window.location.reload()}
+							>
+								<FaSyncAlt hidden={isLoading} />{" "}
+								<FaSpinner hidden={!isLoading} />
+							</span>
 						</div>
 					</div>
 					<div className="col-lg-4">
 						<div className="outputBox card p-4">
 							<h5>Output</h5>
+							{output}
 						</div>
 					</div>
 				</div>
