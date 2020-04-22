@@ -37,7 +37,7 @@ export const problemsService = async () => {
 				headers: { "x-auth-token": AUTH_TOKEN }
 			});
 			if (response.data.message === "success") {
-				return response.data.data;
+				return response.data;
 			} else {
 				console.log(response);
 			}

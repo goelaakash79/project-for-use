@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Controlled as CodeMirror } from "react-codemirror2";
 import "codemirror/mode/javascript/javascript";
 import Axios from "axios";
@@ -6,6 +6,12 @@ import Axios from "axios";
 // import "./style.css";
 export default props => {
 	const [code, setCode] = useState("//write your code here");
+
+	useEffect(() => {
+		if (!localStorage.getItem("token")) {
+			props.history.push("/login");
+		}
+	}, []);
 
 	const handleSubmit = async () => {
 		const res = await Axios.post(
