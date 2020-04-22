@@ -36,11 +36,8 @@ export const problemsService = async () => {
 			const response = await axios.get(practiceProblems, {
 				headers: { "x-auth-token": AUTH_TOKEN }
 			});
-			if (response.data.message === "success") {
-				return response.data;
-			} else {
-				console.log(response);
-			}
+
+			return response.data;
 		}
 	} catch (err) {
 		console.log(err.response);
