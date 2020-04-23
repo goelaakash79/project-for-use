@@ -7,14 +7,13 @@ import {
 	practiceProblems
 } from "./routes";
 
-axios.defaults.baseURL = "https://vr12-project.herokuapp.com/api/";
+axios.defaults.baseURL = "http://vr12-project.herokuapp.com/api";
 
 export const loginService = async data => {
 	try {
 		const response = await axios.post(authLogin, data);
 		return response.data;
 	} catch (err) {
-		// console.log(err.response);
 		return err.response.data;
 	}
 };
@@ -24,7 +23,6 @@ export const registerService = async data => {
 		const response = await axios.post(authRegister, data);
 		return response.data;
 	} catch (err) {
-		// console.log(err.response);
 		return err.response.data;
 	}
 };
@@ -68,13 +66,7 @@ export const compileProgramService = async ({ source }) => {
 	try {
 		let AUTH_TOKEN = localStorage.getItem("token");
 		if (AUTH_TOKEN) {
-			const response = await axios.post(
-				compileProgram,
-				// {
-				// 	headers: { "x-auth-token": AUTH_TOKEN }
-				// },
-				{ source }
-			);
+			const response = await axios.post(compileProgram, { source });
 			return response.data;
 		}
 	} catch (err) {
