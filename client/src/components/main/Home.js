@@ -33,8 +33,8 @@ export default props => {
 							Join CodeEra
 						</button>
 						<p className="mt-5">
-							Developed by Abhishek Verma | Faizan Malik |
-							Depandra Singh
+							Developed by Abhishek Verma | Faizan | Depandra
+							Singh
 						</p>
 					</div>
 					<div className="col-lg-5 mt-5">
