@@ -82,6 +82,26 @@ export default props => {
 							Contests
 						</span>
 						<span
+							className="mr-4"
+							onClick={() =>
+								window.location.assign(
+									"https://forms.gle/BXec4dMQgVwyF8uq9"
+								)
+							}
+						>
+							Get Mentorship
+						</span>
+						<span
+							className="mr-4"
+							onClick={() =>
+								window.location.assign(
+									"https://www.stopstalk.com/user/profile/abhishekvr12"
+								)
+							}
+						>
+							Performance
+						</span>
+						<span
 							onClick={() => {
 								localStorage.clear();
 								props.history.push("/login");

@@ -39,7 +39,7 @@ export default props => {
 					</div>
 					<div className="col-lg-5 mt-5">
 						<img
-							src="https://codejudge.io/wp-content/uploads/2020/04/cj-1-2.png"
+							src="https://secureservercdn.net/160.153.137.170/n1r.522.myftpupload.com/wp-content/uploads/2018/11/banner_img.png"
 							alt=""
 							width="100%"
 						/>
